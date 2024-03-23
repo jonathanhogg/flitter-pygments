@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flitter-pygments"
-version = "1.0.0b6"
+version = "1.0.0b11"
 description = "A Pygments plugin providing a lexer for the Flitter visuals functional programming language"
 authors = [
   {name = "Jonathan Hogg", email = "me@jonathanhogg.com"},
