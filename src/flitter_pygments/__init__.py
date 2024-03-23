@@ -24,8 +24,8 @@ class FlitterLexer(RegexLexer):
             (r'%pragma\b', Keyword.Reserved),
             (r'\b(for|in|import|from|if|elif|else|let)\b', Keyword.Reserved),
             (r'\bfunc\b', Keyword.Declaration),
-            (r'\!\w+\b', Name.Tag, 'node'),
-            (r'@\w+\b', Name.Tag.Psuedo, 'node'),
+            (r"\!\w+'*(?![\w'])", Name.Tag, 'node'),
+            (r"@\w+'*(?![\w'])", Name.Tag.Psuedo, 'node'),
             include('expressions'),
         ],
 
@@ -40,25 +40,25 @@ class FlitterLexer(RegexLexer):
 
         'expressions': [
             (r'\b[-+]?([0-9][_0-9]*(\.[0-9][_0-9]*)?|\.[0-9][_0-9]*)([eE][-+]?[0-9][_0-9]*)?[pnuµmkMGT]?\b', Literal.Number),
-            (r':\w+\b', Literal.String.Symbol),
+            (r":\w+'*(?![\w'])", Literal.String.Symbol),
             (r'\b(for|in|where|if|else)\b', Keyword.Reserved),
             (r'\b(true|false|null)\b', Keyword.Constant),
-            (r'\b({})(?!\')\b'.format('|'.join(builtin)), Name.Builtin),
+            (r"\b({})(?!')\b".format('|'.join(builtin)), Name.Builtin),
             (r'(\.\.|//|\*\*|==|\!=|\<=|\>=|[-|+*/%<>\$=;])', Operator),
             (r'\b(and|or|xor|not)\b', Operator.Word),
-            (r'(?<!\!#@:)\w+\b', Name.Variable),
+            (r"(?<!\!#@:)\w+'*(?![\w'])", Name.Variable),
             (r'[(),\[\]]', Punctuation),
             (r'"""', Literal.String.Double, 'tdqs'),
-            (r"'''", Literal.String.Single, 'tsqs'),
+            (r"(?<!\w)'''", Literal.String.Single, 'tsqs'),
             (r'"', Literal.String.Double, 'dqs'),
-            (r"'", Literal.String.Single, 'sqs'),
+            (r"(?<!\w)'", Literal.String.Single, 'sqs'),
         ],
 
         'node': [
             (r'(?<!\\)\n', Whitespace, '#pop'),
             include('common'),
-            (r'\b\w+\s*=(?!=)', Name.Attribute),
-            (r'#\w+\b', Name.Label),
+            (r"\b\w+'*\s*=(?!=)", Name.Attribute),
+            (r"#\w+'*(?![\w'])", Name.Label),
             include('expressions'),
         ],
 
