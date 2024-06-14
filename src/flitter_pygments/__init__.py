@@ -30,7 +30,7 @@ class FlitterLexer(RegexLexer):
         ],
 
         'common': [
-            (r'\\\n', Whitespace),
+            (r'\\\n', Punctuation),
             (r'\s+', Whitespace),
             (r'--.*$', Comment.Single),
 
