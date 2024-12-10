@@ -14,8 +14,8 @@ class FlitterLexer(RegexLexer):
     filenames = ["*.fl"]
     mimetypes = ["text/x-flitter-lang"]
 
-    builtin = ('beat', 'quantum', 'tempo', 'delta', 'clock', 'performance', 'fps', 'realtime',
-               'window_gamma', 'screen', 'fullscreen', 'vsync', 'offscreen')
+    builtin = ('beat', 'quantum', 'tempo', 'fps', 'delta', 'time', 'frame', 'performance', 'slow_frame', 'clock',
+               'realtime', 'screen', 'fullscreen', 'vsync', 'offscreen', 'opengles', 'run_time')
 
     tokens = {
         'root': [
@@ -42,7 +42,7 @@ class FlitterLexer(RegexLexer):
             (r'\b[-+]?([0-9][_0-9]*(\.[0-9][_0-9]*)?|\.[0-9][_0-9]*)([eE][-+]?[0-9][_0-9]*)?[pnuµmkMGT]?\b', Literal.Number),
             (r":\w+'*(?![\w'])", Literal.String.Symbol),
             (r'\b(for|in|where|if|else)\b', Keyword.Reserved),
-            (r'\b(true|false|null)\b', Keyword.Constant),
+            (r'\b(true|false|null|nan|inf)\b', Keyword.Constant),
             (r"\b({})(?!')\b".format('|'.join(builtin)), Name.Builtin),
             (r'(\.\.|//|\*\*|==|\!=|\<=|\>=|[-|+*/%<>\$=;])', Operator),
             (r'\b(and|or|xor|not)\b', Operator.Word),
