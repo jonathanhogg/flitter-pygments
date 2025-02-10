@@ -39,6 +39,7 @@ class FlitterLexer(RegexLexer):
         ],
 
         'expressions': [
+            (r'\b([0-9]+:)?[0-5]?[0-9]:[0-5]?[0-9](\.[0-9]+)?\b', Literal.Number.Time),
             (r'\b[-+]?([0-9][_0-9]*(\.[0-9][_0-9]*)?|\.[0-9][_0-9]*)([eE][-+]?[0-9][_0-9]*)?[pnuµmkMGT]?\b', Literal.Number),
             (r":\w+'*(?![\w'])", Literal.String.Symbol),
             (r'\b(for|in|where|if|else)\b', Keyword.Reserved),
