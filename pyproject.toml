@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flitter-pygments"
-version = "1.0.0b25"
+version = "1.0.0b28"
 description = "A Pygments plugin providing a lexer for the Flitter visuals functional programming language"
 authors = [
   {name = "Jonathan Hogg", email = "me@jonathanhogg.com"},
@@ -23,6 +23,8 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Environment :: Console",
   "Environment :: GPU",
   "Environment :: MacOS X",
